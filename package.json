@@ -1,0 +1,30 @@
+{
+	"name": "sw-front",
+	"version": "0.0.1",
+	"dependencies": {
+		"node-bourbon": "1.0.0"
+	},
+	"devDependencies": {
+		"gulp-util": "latest",
+		"gulp": "latest",
+		"gulp-browserify": "latest",
+		"gulp-if": "latest",
+		"gulp-sass": "latest",
+		"gulp-uglify": "latest",
+		"reactify": "latest",
+		"tiny-lr": "latest",
+		"express": "latest",
+		"chokidar": "latest",
+		"gulp-watch": "latest",
+		"gulp-livereload":"latest",
+		"connect-livereload": "latest",
+		"express" : "latest",
+		"connect-livereload":"latest",
+		"gulp-livereload": "latest",
+		"gulp-concat": "latest",
+		"gulp-bower" : "latest"
+	},
+	"engines": {
+		"node": ">=0.10.0"
+	}
+}
