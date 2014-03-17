@@ -1,0 +1,17 @@
+$app-icon-font-name:          "appfont" !default;
+
+@font-face {
+  font-family: $app-icon-font-name;
+  src: url('#{$icon-font-path}#{$app-icon-font-name}.eot');
+  src: url('#{$icon-font-path}#{$app-icon-font-name}.eot?#iefix') format('embedded-opentype'),
+  //url('#{$icon-font-path}#{$app-icon-font-name}.woff') format('woff'),
+  url('#{$icon-font-path}#{$app-icon-font-name}.ttf') format('truetype'),
+  url('#{$icon-font-path}#{$app-icon-font-name}.svg##{$app-icon-font-name}') format('svg');
+}
+
+// Catchall baseclass
+.appglyphicon {
+  font-family: $app-icon-font-name ! important;
+}
+
+.appglyphicon-up               { &:before { content: "\e005"; } }

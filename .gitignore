@@ -9,5 +9,7 @@
 stat/*
 !.gitkeep
 node_modules/
-src/vendor/
+src/assets/vendor/
 dist/
+report/
+.sass-cache/
