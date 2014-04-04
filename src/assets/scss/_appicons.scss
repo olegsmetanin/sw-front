@@ -1,4 +1,4 @@
-$app-icon-font-name:          "appfont" !default;
+
 
 @font-face {
   font-family: $app-icon-font-name;
@@ -7,6 +7,18 @@ $app-icon-font-name:          "appfont" !default;
   //url('#{$icon-font-path}#{$app-icon-font-name}.woff') format('woff'),
   url('#{$icon-font-path}#{$app-icon-font-name}.ttf') format('truetype'),
   url('#{$icon-font-path}#{$app-icon-font-name}.svg##{$app-icon-font-name}') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.fap {
+  display: inline-block;
+  font-family: $app-icon-font-name ! important;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 // Catchall baseclass
@@ -14,4 +26,11 @@ $app-icon-font-name:          "appfont" !default;
   font-family: $app-icon-font-name ! important;
 }
 
-.appglyphicon-up               { &:before { content: "\e005"; } }
+.fap-structuredway                { &:before { content: "\e001"; } }
+.fap-square                       { &:before { content: "\e019"; } }
+.fap-squarepencil                 { &:before { content: "\e020"; } }
+.fap-squareprinter                { &:before { content: "\e021"; } }
+.fap-database                     { &:before { content: "\e023"; } }
+.fap-cloud                        { &:before { content: "\e024"; } }
+.fap-hierarchical                 { &:before { content: "\e025"; } }
+.fap-mobdevices                   { &:before { content: "\e026"; } }

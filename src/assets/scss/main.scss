@@ -1,177 +1,161 @@
-
 @import 'bourbon';
 
+@import 'variables';
 
-
-$font-family-sans-serif:  'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif !default;
-
-$navbar-inverse-color:                      #263039 !default;
-$navbar-inverse-bg:                         #e0e0e0 !default;
-$navbar-inverse-border:                     darken($navbar-inverse-bg, 10%) !default;
-
-$navbar-inverse-link-active-bg:             darken($navbar-inverse-bg, 10%) !default;
-
-@import 'bootstrap';
+@import 'appvariables';
 
 @import 'appicons';
 
+@import 'appmixins';
 
+@import 'mixins';
 
-$primary-color: #333;
-$border-color: #BBB;
+@import 'promo';
 
-$primary-size: 16px;
-
-
-
-.navbar-fixed-top.scroll {
+.navbar-fixed-top {
   opacity: 0.96;
-  $shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.9);
-  @include box-shadow($shadow);
 }
 
-.navbar a.navbar-brand span.logo_title {
-  display: block;
+.navbar a.navbar-brand {
+  display: inline-block;
   text-shadow: 1px 1px 0px #ffffff;
-}
+  padding: 0;
 
-body {
-  color: $primary-color;
-  background: #EEE;
-  margin: 50px;
-}
+  .logo-icon {
+    width:30px;
+    height: 30px;
+    //float: left;
 
-h1 {
-  font-size: 1.5em;
-  margin-bottom: 1.5em;
-}
 
-h2 {
-  font-size: 1.2em;
-  margin-bottom: 0;
-}
-
-input, textarea {
-  border: 1px solid $border-color;
-  display: block;
-  font-size: $primary-size;
-  padding: 5px;
-  width: 400px;
-}
-
-textarea {
-  height: 100px;
-}
-
-a.button, button {
-  @include button;
-}
-
-.comment {
-  margin-bottom: 2em;
-  width: 400px;
-  &.comment-enter {
-    opacity: 0;
-    @include transition(opacity 500ms ease-in);
-    &.comment-enter-active {
-      opacity: 1;
+    .appglyphicon-logo {
+      font-size:50px;
     }
   }
-  &.comment-leave {
-    opacity: 1;
-    @include transition(opacity 500ms ease-in);
-    &.comment-leave-active {
-      opacity: 0;
-    }
+
+  .logo-text {
+    display: inline-block;
+    float: left;
+    margin: 15px 15px;
   }
 }
 
-@import 'config';
+.container-full {
+  padding: 0;
+  margin-top: 50px;
+}
+//body {
+//  color: $primary-color;
+//  background: #EEE;
+//  margin-top: 50px;
+//}
 
 
 
-/* GLOBAL STYLES
--------------------------------------------------- */
-/* Padding below the footer and lighter body text */
+
+/*  Tablet  */
+@media (min-width:767px){
+
+  /* Column clear fix */
+  .col-lg-1:nth-child(12n+1),
+  .col-lg-2:nth-child(6n+1),
+  .col-lg-3:nth-child(4n+1),
+  .col-lg-4:nth-child(3n+1),
+  .col-lg-6:nth-child(2n+1),
+  .col-md-1:nth-child(12n+1),
+  .col-md-2:nth-child(6n+1),
+  .col-md-3:nth-child(4n+1),
+  .col-md-4:nth-child(3n+1),
+  .col-md-6:nth-child(2n+1){
+    clear: none;
+  }
+  .col-sm-1:nth-child(12n+1),
+  .col-sm-2:nth-child(6n+1),
+  .col-sm-3:nth-child(4n+1),
+  .col-sm-4:nth-child(3n+1),
+  .col-sm-6:nth-child(2n+1){
+    clear: left;
+  }
+}
+
+
+/*  Medium Desktop  */
+@media (min-width:992px){
+
+  /* Column clear fix */
+  .col-lg-1:nth-child(12n+1),
+  .col-lg-2:nth-child(6n+1),
+  .col-lg-3:nth-child(4n+1),
+  .col-lg-4:nth-child(3n+1),
+  .col-lg-6:nth-child(2n+1),
+  .col-sm-1:nth-child(12n+1),
+  .col-sm-2:nth-child(6n+1),
+  .col-sm-3:nth-child(4n+1),
+  .col-sm-4:nth-child(3n+1),
+  .col-sm-6:nth-child(2n+1){
+    clear: none;
+  }
+  .col-md-1:nth-child(12n+1),
+  .col-md-2:nth-child(6n+1),
+  .col-md-3:nth-child(4n+1),
+  .col-md-4:nth-child(3n+1),
+  .col-md-6:nth-child(2n+1){
+    clear: left;
+  }
+}
+
+
+/*  Large Desktop  */
+@media (min-width:1200px){
+
+  /* Column clear fix */
+  .col-md-1:nth-child(12n+1),
+  .col-md-2:nth-child(6n+1),
+  .col-md-3:nth-child(4n+1),
+  .col-md-4:nth-child(3n+1),
+  .col-md-6:nth-child(2n+1),
+  .col-sm-1:nth-child(12n+1),
+  .col-sm-2:nth-child(6n+1),
+  .col-sm-3:nth-child(4n+1),
+  .col-sm-4:nth-child(3n+1),
+  .col-sm-6:nth-child(2n+1){
+    clear: none;
+  }
+  .col-lg-1:nth-child(12n+1),
+  .col-lg-2:nth-child(6n+1),
+  .col-lg-3:nth-child(4n+1),
+  .col-lg-4:nth-child(3n+1),
+  .col-lg-6:nth-child(2n+1){
+    clear: left;
+  }
+}
+
+
+
+
+
+#header_shadow {
+  background:url('../img/header_shadow-lg.png') no-repeat top center;
+  position:fixed;
+  top:92px; left:0; right:0;
+  height:75px;
+  z-index:99; /* same with header#page-title .container */
+}
+
+.footer {
+  margin-top: 20px;
+  //color: $footer-color;
+  background-color: #e0e0e0;
+  opacity: 0.96;
+  border-color: #cfcfcf;
+  //@include gradient-radial(#36414e, #253241);
+}
+
+.footer a {
+  //color: lighten($footer-color, 20%);
+}
 
 body {
-  padding-bottom: 40px;
-  color: #5a5a5a;
-}
-
-
-
-/* CUSTOMIZE THE NAVBAR
--------------------------------------------------- */
-
-/* Special class on .container surrounding .navbar, used for positioning it into place. */
-.navbar-wrapper {
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  z-index: 20;
-}
-
-/* Flip around the padding for proper display in narrow viewports */
-.navbar-wrapper .container {
-  padding-right: 0;
-  padding-left: 0;
-}
-.navbar-wrapper .navbar {
-  padding-right: 15px;
-  padding-left: 15px;
-}
-
-
-/* CUSTOMIZE THE CAROUSEL
--------------------------------------------------- */
-
-/* Carousel base class */
-.carousel {
-  height: 500px;
-  margin-bottom: 60px;
-}
-/* Since positioning the image, we need to help out the caption */
-.carousel-caption {
-  z-index: 10;
-}
-
-/* Declare heights because of positioning of img element */
-.carousel .item {
-  height: 500px;
-  background-color: #777;
-}
-.carousel-inner > .item > img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  min-width: 100%;
-  height: 500px;
-}
-
-
-
-/* MARKETING CONTENT
--------------------------------------------------- */
-
-/* Pad the edges of the mobile views a bit */
-.marketing {
-  padding-right: 15px;
-  padding-left: 15px;
-}
-
-/* Center align the text within the three columns below the carousel */
-.marketing .col-lg-4 {
-  margin-bottom: 20px;
-  text-align: center;
-}
-.marketing h2 {
-  font-weight: normal;
-}
-.marketing .col-lg-4 p {
-  margin-right: 10px;
-  margin-left: 10px;
+  color:#5a5a5a;
 }
 
 
@@ -196,12 +180,6 @@ body {
 
 @media (min-width: 768px) {
 
-  /* Remove the edge padding needed for mobile */
-  .marketing {
-    padding-right: 0;
-    padding-left: 0;
-  }
-
   /* Navbar positioning foo */
   .navbar-wrapper {
     margin-top: 20px;
@@ -220,20 +198,7 @@ body {
     border-radius: 4px;
   }
 
-  /* Bump up size of carousel content */
-  .carousel-caption p {
-    margin-bottom: 20px;
-    font-size: 21px;
-    line-height: 1.4;
-  }
-
   .featurette-heading {
     font-size: 50px;
-  }
-}
-
-@media (min-width: 992px) {
-  .featurette-heading {
-    margin-top: 120px;
   }
 }

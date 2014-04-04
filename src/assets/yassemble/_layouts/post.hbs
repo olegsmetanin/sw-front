@@ -1,0 +1,42 @@
+{{#extend "masterpage"}}
+	{{#content "container"}}
+
+		<div class="section">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+
+						<!-- blog entry -->
+
+						<h1><a href="/{{path}}/{{basename}}.html">{{title}}</a></h1>
+						<h5><span class="glyphicon glyphicon-time"></span> Posted by {{author}}
+							on {{formatDate date  "%F %I:%M%p" }}</h5>
+
+						{{> body }}
+
+						<br>
+
+						{{#each tags}}
+
+							<a href="/tags/{{this}}.html"> <span class="label label-default"> {{this }}</span></a>
+
+						{{/each }}
+
+						See also
+						{{#relativesByTags this.id tags allpages 5}}
+							{{#each pages}}
+								<h1><a href="/{{path}}/{{basename}}.html">{{title}}</a></h1>
+							{{/each}}
+						{{/relativesByTags}}
+
+					</div>
+				</div>
+				<!-- blog entry end -->
+
+			</div>
+			<!-- /container -->
+
+		</div><!-- /section -->
+
+	{{/content}}
+{{/extend}}

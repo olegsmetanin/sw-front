@@ -27,7 +27,18 @@
 		"gulp-plato":"latest",
 		"gulp-jshint": "~1.5.0",
 		"gulp-beautify": "latest",
-		"gulp-iconfont":"latest"
+		"gulp-iconfont": "latest",
+
+		"handlebars-helpers": "latest",
+		"async":"latest",
+		"assemble-yaml": "latest",
+		"lodash": "latest",
+		"through2": "latest",
+		"fs-utils": "latest",
+		"handlebars": "latest",
+
+		"glob": "latest",
+		"grunt": "latest"
 
 	},
 	"engines": {

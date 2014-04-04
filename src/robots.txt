@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /ru
+Disallow: /en
+Sitemap: http://structuredway.com/sitemap.xml

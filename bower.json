@@ -4,6 +4,9 @@
   "dependencies": {
     "bootstrap": "~3.1.1",
     "skrollr": "~0.6.21",
-	"bootstrap-sass": "~3.0.2"
+	"skrollr-menu": "~0.1.11",
+	"bootstrap-sass": "~3.0.2",
+	"imagesloaded":"~3.1.4",
+	"font-awesome":"~4.0.3"
   }
 }

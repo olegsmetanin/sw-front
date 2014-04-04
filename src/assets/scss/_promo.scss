@@ -1,0 +1,60 @@
+.clip2 {
+  //@include clip-path(polygon(0 0, 96% 0, 96% 40%, 100% 40%,96% 48%,96% 100%, 0 100%));
+  @include scale(2);
+}
+
+#pic1 {
+  background: url('../img/promo/1_0.png') no-repeat top center;
+  background-size: 100%;
+}
+
+.promobox {
+//  @media (min-width: $screen-xs-min) {
+    @include border-radius(10px);
+    @include opacity(0.8);
+    background-color: #FFF;
+  padding: 40px;
+  //margin-top:40px;
+  overflow: hidden;
+//  }
+
+
+ }
+
+.promoblock {
+  padding-top: 60px;
+}
+
+.promobox1 {
+  @media (min-width: $screen-sm-min) {
+    margin-top: 30%;
+  }
+}
+
+.video-container {
+  height: 0px;
+  padding-bottom: 62%; /* proportional scaling */
+  position:relative;
+  width: 100%;
+  float: left; /* just to see side by side */
+}
+
+.addConstant {
+  padding-top: 50px;
+}
+
+.video-container div {
+  top: 0;
+  height: 100%;
+  position: absolute;
+  width: 100%;
+  background-color: cyan;
+}
+
+.addConstant div {
+  background-color: yellow;
+}
+
+.test img {
+
+}

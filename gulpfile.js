@@ -15,7 +15,8 @@ var gulp = require('gulp'),
 	jshint = require('gulp-jshint'),
 	log = require('gulp-util').log,
 	beautify = require('gulp-beautify'),
-	iconfont = require('gulp-iconfont');
+	iconfont = require('gulp-iconfont'),
+	yassemble = require('./gulp-yassemble/index.js');
 
 var livereloadport = 35729,
 	serverport = 5001;
@@ -41,6 +42,13 @@ gulp.task('scripts', function() {
 					path: 'src/assets/vendor/skrollr/dist/skrollr.min.js',
 					exports: 'skrollr'
 				},
+				'skrollrmenu': {
+					path: 'src/assets/vendor/skrollr-menu/src/skrollr.menu.js',
+					exports: null,
+					depends: {
+						skrollr: 'skrollr'
+					}
+				},
 				'bootstrap': {
 					path: 'src/assets/vendor/bootstrap-sass/dist/js/bootstrap.js',
 					exports: null,
@@ -62,12 +70,13 @@ gulp.task('scripts', function() {
 });
 
 gulp.task('styles', function () {
-	return gulp.src(['./src/assets/scss/main.scss'])
+	return gulp.src(['./src/assets/scss/main.scss','./src/assets/scss/appbootstrap.scss', './src/assets/scss/appfontawesome.scss'])
 		.pipe(gulpsass({
 			outputStyle: 'expanded',
 			includePaths: [
 				'./src/assets/scss',
-				"./src/assets/vendor/bootstrap-sass/lib"
+				"./src/assets/vendor/bootstrap-sass/lib",
+				"./src/assets/vendor/font-awesome/scss"
 			].concat(bourbon),
 			errLogToConsole: true
 		}))
@@ -76,22 +85,50 @@ gulp.task('styles', function () {
 
 
 gulp.task('font', function() {
-	return gulp.src(["src/assets/vendor/bootstrap-sass/fonts/**"])
+	return gulp.src(["src/assets/vendor/bootstrap-sass/fonts/**", "src/assets/vendor/font-awesome/fonts/**"])
 		.pipe(gulp.dest('./dist/assets/fonts'));
 });
 
 gulp.task('iconfont', function(){
-	gulp.src(['./src/assets/icons/*.svg'])
+	return gulp.src(['./src/assets/icons/*.svg'])
 		.pipe(iconfont({
-			fontName: 'appfont'
+			fontName: 'appfont',
+			appendCodepoints: true, // recommanded option
+			descent:  -256,
+			fontHeight: 1792,
+			fontWidth: 1536
 		}))
 		.pipe(gulp.dest('./dist/assets/fonts'));
 });
 
 
 gulp.task('html', function() {
-	return gulp.src(["src/**/*.html", "!src/assets/**"])
+	return gulp.src(["src/**/*", "!src/**/*.hbs", "!src/assets/**"])
 		.pipe(gulp.dest('./dist'));
+});
+
+gulp.task('yassemble', function() {
+	return gulp.src(["src/**/*.hbs", "!src/assets/**"])
+		.pipe(yassemble({
+			helpers: ["src/assets/yassemble/_helpers/"],
+			plugins: ['src/assets/yassemble/_plugins/'],
+			partials: ['src/assets/yassemble/_partials/'],
+			producers: ["src/assets/yassemble/_producers/"],
+			layouts: ["src/assets/yassemble/_layouts/"],
+			data: ["src/assets/yassemble/_data/"],
+			index: ["src/assets/yassemble/_index/"],
+			tasks: [{
+				categories:['promo', 'single'],
+				layout: 'single.hbs',
+				producer: 'plain'
+			}]
+		}))
+		.pipe(gulp.dest('./dist'));
+});
+
+gulp.task('img', function() {
+	return gulp.src(["src/assets/img/**"])
+		.pipe(gulp.dest('./dist/assets/img'));
 });
 
 gulp.task('serve', function() {
@@ -102,7 +139,11 @@ gulp.task('serve', function() {
 gulp.task('watch', function () {
 	gulp.watch('src/assets/js/**', ['lint','scripts']);
 	gulp.watch('src/assets/scss/**', ['styles']);
-	gulp.watch(['src/**/*.html', '!src/assets/**'], ['html']);
+	gulp.watch('src/assets/icons/**', ['iconfont']);
+	gulp.watch('src/assets/img/**', ['img']);
+	gulp.watch(['src/**/*.*',  "!src/**/*.hbs", '!src/assets/**'], ['html']);
+	gulp.watch(['src/**/*.hbs', '!src/assets/**'], ['yassemble']);
+	gulp.watch(['src/assets/yassemble/**/*.hbs'], ['yassemble']);
 });
 
 gulp.task('lint', function() {
@@ -113,7 +154,7 @@ gulp.task('lint', function() {
 });
 
 gulp.task('report', function () {
-	gulp.src('./src/assets/js/**/*.js')
+	return gulp.src('./src/assets/js/**/*.js')
 		.pipe(plato('report', {
 			jshint: {
 				options: {
@@ -127,9 +168,9 @@ gulp.task('report', function () {
 });
 
 gulp.task('beautify', function() {
-	gulp.src('./src/assets/js/**/*.js')
+	return gulp.src('./src/assets/js/**/*.js')
 		.pipe(beautify({indentSize: 2}))
 		.pipe(gulp.dest('./src/js/'))
 });
 
-gulp.task('default', ['bower','lint','scripts', 'styles', 'font', 'html', 'serve', 'watch']);
+gulp.task('default', ['bower','lint','scripts', 'styles', 'font', 'iconfont', 'img', 'html', 'yassemble', 'serve', 'watch']);
